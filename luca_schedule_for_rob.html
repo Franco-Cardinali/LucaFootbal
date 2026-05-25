@@ -46,8 +46,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 /* Desktop table layout */
 .desktop-table { display: none; }
 .desktop-table table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid #EAEAEA; }
-.desktop-table th { background: #2a2a2a; color: #C8A96A; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
-.desktop-table td { padding: 14px 16px; border-bottom: 1px solid #EAEAEA; font-size: 14px; color: #1C1C1C; }
+.desktop-table th { background: #2a2a2a; color: #C8A96A; padding: 12px 14px; text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+.desktop-table td { padding: 12px 14px; border-bottom: 1px solid #EAEAEA; font-size: 13px; color: #1C1C1C; white-space: nowrap; }
+.desktop-table td:nth-child(4) { white-space: normal; }
 .desktop-table tr:last-child td { border-bottom: none; }
 .desktop-table tr.training { background: #fff; }
 .desktop-table tr.training:hover { background: #FAFAFA; }
@@ -60,6 +61,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 
 @media (min-width: 700px) {
   body { padding: 40px; }
+  .container { max-width: 950px; }
   .info-box { padding: 20px; margin-bottom: 24px; }
   .info-box h3 { font-size: 14px; }
   .info-box p { font-size: 14px; }
