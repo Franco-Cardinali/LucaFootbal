@@ -6,62 +6,60 @@
 <title>Luca Cardinali - Weekly Football Schedule</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #2c3e50; padding: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #FAF9F7; color: #1C1C1C; padding: 16px; }
 .container { max-width: 800px; margin: 0 auto; }
 .profile { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
-.profile-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid #1a1a2e; box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
-.profile-info h1 { font-size: 20px; color: #1a1a2e; margin-bottom: 2px; font-weight: 700; letter-spacing: -0.5px; }
-.profile-info p { color: #666; font-size: 13px; margin: 0; }
-.profile-info .dob { font-size: 12px; color: #888; margin-top: 2px; }
-@media (min-width: 700px) { .profile-info h1 { font-size: 26px; } .profile-img { width: 120px; height: 120px; } }
-.info-box { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #3498db; }
-.info-box h3 { font-size: 12px; color: #3498db; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.info-box p { font-size: 13px; color: #555; line-height: 1.5; }
+.profile-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid #C8A96A; box-shadow: 0 4px 16px rgba(200,169,106,0.15); }
+.profile-info h1 { font-size: 22px; color: #1C1C1C; margin-bottom: 2px; font-weight: 700; letter-spacing: -0.5px; }
+.profile-info p { color: #6E6E6E; font-size: 13px; margin: 0; }
+.profile-info .dob { font-size: 12px; color: #6E6E6E; margin-top: 2px; }
+@media (min-width: 700px) { .profile-info h1 { font-size: 28px; } .profile-img { width: 120px; height: 120px; } }
+.info-box { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid #C8A96A; }
+.info-box h3 { font-size: 12px; color: #7A6528; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.info-box p { font-size: 13px; color: #6E6E6E; line-height: 1.5; }
 
 /* SVG icon styles */
 .icon { width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 4px; }
 
 /* Card layout (mobile) */
-.day-card { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.day-card.game-day { background: #e8f8f0; }
+.day-card { background: #fff; border-radius: 12px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid #EAEAEA; }
+.day-card.game-day { background: #fff; border-left: 3px solid #4ecca3; }
 .day-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.day-name { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+.day-name { font-size: 16px; font-weight: 700; color: #1C1C1C; }
 .badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; white-space: nowrap; min-width: 72px; text-align: center; }
 .badge.high { background: #e94560; color: #fff; }
 .badge.medium { background: #e67e22; color: #fff; }
 .badge.light { background: #4ecca3; color: #fff; }
 .badge.super-light { background: #d4f5e9; color: #2d6a4f; }
 .badge.game { background: #3498db; color: #fff; }
-.day-meta { display: flex; gap: 16px; font-size: 12px; color: #888; margin-bottom: 6px; }
+.day-meta { display: flex; gap: 16px; font-size: 12px; color: #6E6E6E; margin-bottom: 6px; }
 .day-meta span { display: flex; align-items: center; gap: 4px; }
-.day-details { font-size: 13px; color: #555; line-height: 1.5; }
-.gym-note { margin-top: 8px; padding: 6px 10px; background: #e8f8f0; border-radius: 6px; font-size: 12px; color: #2d6a4f; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.day-details { font-size: 13px; color: #6E6E6E; line-height: 1.5; }
+.gym-note { margin-top: 8px; padding: 6px 10px; background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 6px; font-size: 12px; color: #7A6528; font-weight: 500; display: flex; align-items: center; gap: 6px; }
 
-.notes { margin-top: 20px; background: #fff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #e67e22; }
-.notes h3 { font-size: 13px; color: #e67e22; margin-bottom: 8px; }
+.notes { margin-top: 20px; background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid #C8A96A; }
+.notes h3 { font-size: 13px; color: #7A6528; margin-bottom: 8px; }
 .notes ul { list-style: none; padding: 0; }
-.notes li { font-size: 12px; color: #555; padding: 4px 0; padding-left: 14px; position: relative; }
-.notes li:before { content: "•"; position: absolute; left: 0; color: #e67e22; }
+.notes li { font-size: 12px; color: #6E6E6E; padding: 4px 0; padding-left: 14px; position: relative; }
+.notes li:before { content: "•"; position: absolute; left: 0; color: #C8A96A; }
 
 /* Desktop table layout */
 .desktop-table { display: none; }
-.desktop-table table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-.desktop-table th { background: #1a1a2e; color: #fff; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
-.desktop-table td { padding: 14px 16px; border-bottom: 1px solid #eee; font-size: 14px; color: #2c3e50; }
+.desktop-table table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border: 1px solid #EAEAEA; }
+.desktop-table th { background: #2a2a2a; color: #C8A96A; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+.desktop-table td { padding: 14px 16px; border-bottom: 1px solid #EAEAEA; font-size: 14px; color: #1C1C1C; }
 .desktop-table tr:last-child td { border-bottom: none; }
 .desktop-table tr.training { background: #fff; }
-.desktop-table tr.training:hover { background: #f8f8f8; }
-.desktop-table tr.game { background: #e8f8f0; }
+.desktop-table tr.training:hover { background: #FAFAFA; }
+.desktop-table tr.game { background: #f0faf5; }
 .desktop-table .badge { padding: 6px 14px; }
-.desktop-table .gym-available { color: #27ae60; font-weight: 500; }
-.desktop-table .gym-na { color: #ccc; }
+.desktop-table .gym-available { color: #7A6528; font-weight: 500; font-size: 12px; white-space: nowrap; }
+.desktop-table .gym-na { color: #EAEAEA; }
 
 .mobile-cards { display: block; }
 
 @media (min-width: 700px) {
   body { padding: 40px; }
-  .header h1 { font-size: 26px; }
-  .header p { font-size: 14px; }
   .info-box { padding: 20px; margin-bottom: 24px; }
   .info-box h3 { font-size: 14px; }
   .info-box p { font-size: 14px; }
