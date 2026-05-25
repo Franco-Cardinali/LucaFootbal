@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luca Cardinali - Weekly Football Schedule</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; color: #2c3e50; padding: 40px; }
+.container { max-width: 800px; margin: 0 auto; }
+.header { margin-bottom: 30px; }
+.header h1 { font-size: 24px; color: #1a1a2e; margin-bottom: 4px; }
+.header p { color: #666; font-size: 14px; }
+.info-box { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #3498db; }
+.info-box h3 { font-size: 14px; color: #3498db; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.info-box p { font-size: 14px; color: #555; line-height: 1.6; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+th { background: #1a1a2e; color: #fff; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+td { padding: 14px 16px; border-bottom: 1px solid #eee; font-size: 14px; }
+tr:last-child td { border-bottom: none; }
+tr.training { background: #fff; }
+tr.game { background: #e8f8f0; }
+tr.free { background: #f9f9f9; color: #999; }
+.badge { display: inline-block; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 600; min-width: 72px; text-align: center; white-space: nowrap; }
+.badge.high { background: #e94560; color: #fff; }
+.badge.medium { background: #e67e22; color: #fff; }
+.badge.light { background: #4ecca3; color: #fff; }
+.badge.super-light { background: #d4f5e9; color: #2d6a4f; }
+.badge.rest { background: #ddd; color: #666; }
+.badge.game { background: #3498db; color: #fff; }
+.notes { margin-top: 24px; background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #e67e22; }
+.notes h3 { font-size: 14px; color: #e67e22; margin-bottom: 8px; }
+.notes ul { list-style: none; padding: 0; }
+.notes li { font-size: 13px; color: #555; padding: 4px 0; padding-left: 16px; position: relative; }
+.notes li:before { content: "•"; position: absolute; left: 0; color: #e67e22; }
+@media print { body { padding: 20px; } .container { max-width: 100%; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Luca Cardinali — Weekly Football Schedule</h1>
+    <p>Age: 15 | Club: Auckland United FC (AUFC Academy) | Team: U17</p>
+  </div>
+
+  <div class="info-box">
+    <h3>Purpose</h3>
+    <p>Overview of Luca's current weekly football load.</p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Time</th>
+        <th>Session Type</th>
+        <th>Details</th>
+        <th>Intensity</th>
+        <th>Gym @ Keith Hay</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="training">
+        <td><strong>Monday</strong></td>
+        <td>4:15 – 5:45 pm</td>
+        <td>Team Training</td>
+        <td>U17 fun activity session (football tennis, etc.) — low physical load</td>
+        <td><span class="badge light">Light</span></td>
+        <td>✅ After 5:45pm</td>
+      </tr>
+      <tr class="training">
+        <td><strong>Tuesday</strong></td>
+        <td>5:00 – 7:00 pm</td>
+        <td>Gym + Grass</td>
+        <td>Combined gym session &amp; on-field work (club-run)</td>
+        <td><span class="badge medium">Medium</span></td>
+        <td>—</td>
+      </tr>
+      <tr class="training">
+        <td><strong>Wednesday</strong></td>
+        <td>4:15 – 5:45 pm</td>
+        <td>Team Training</td>
+        <td>U17 harder session — coach (Hide) pushes intensity</td>
+        <td><span class="badge high">High</span></td>
+        <td>—</td>
+      </tr>
+      <tr class="training">
+        <td><strong>Thursday</strong></td>
+        <td>5:00 – 7:00 pm</td>
+        <td>Gym + Grass</td>
+        <td>Gym session &amp; game tactics on field — mostly medium, sometimes hard</td>
+        <td><span class="badge medium">Med–High</span></td>
+        <td>—</td>
+      </tr>
+      <tr class="training">
+        <td><strong>Friday</strong></td>
+        <td>~1 hour (self-directed)</td>
+        <td>Ball Mastery</td>
+        <td>Solo at the park — ball work, technique &amp; sometimes shooting with goalkeeper friend</td>
+        <td><span class="badge super-light">Very Light</span></td>
+        <td>✅ Flexible</td>
+      </tr>
+      <tr class="training">
+        <td><strong>Saturday</strong></td>
+        <td>~1 hour (self-directed)</td>
+        <td>Ball Mastery</td>
+        <td>Solo at the park — ball work, technique &amp; sometimes shooting with goalkeeper friend</td>
+        <td><span class="badge super-light">Very Light</span></td>
+        <td>✅ Not before game (Sun)</td>
+      </tr>
+      <tr class="game">
+        <td><strong>Sunday</strong></td>
+        <td>12:30 meet / 2:00 KO</td>
+        <td>Match Day</td>
+        <td>U17 league game (finishes ~4:00 pm)</td>
+        <td><span class="badge game">Game</span></td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="notes">
+    <h3>Notes for Rob</h3>
+    <ul>
+      <li>Tuesday &amp; Thursday already include a club gym component</li>
+      <li>Wednesday is the hardest day — coach pushes high intensity</li>
+      <li>Thursday gym + tactics is mostly medium but can be hard</li>
+      <li>Friday &amp; Saturday ball mastery is low physical load, mainly technical</li>
+      <li>Luca has open gym access at Key Hay Park daily</li>
+      <li>Sunday game typically finishes ~4pm</li>
+      <li>Current weekly load: 4 team sessions + 2 solo ball mastery + 1 match = 7 football contacts (~11 hours)</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
