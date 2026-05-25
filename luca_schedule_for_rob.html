@@ -6,34 +6,68 @@
 <title>Luca Cardinali - Weekly Football Schedule</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; color: #2c3e50; padding: 40px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #2c3e50; padding: 16px; }
 .container { max-width: 800px; margin: 0 auto; }
-.header { margin-bottom: 30px; }
-.header h1 { font-size: 24px; color: #1a1a2e; margin-bottom: 4px; }
-.header p { color: #666; font-size: 14px; }
-.info-box { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #3498db; }
-.info-box h3 { font-size: 14px; color: #3498db; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-.info-box p { font-size: 14px; color: #555; line-height: 1.6; }
-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-th { background: #1a1a2e; color: #fff; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
-td { padding: 14px 16px; border-bottom: 1px solid #eee; font-size: 14px; }
-tr:last-child td { border-bottom: none; }
-tr.training { background: #fff; }
-tr.game { background: #e8f8f0; }
-tr.free { background: #f9f9f9; color: #999; }
-.badge { display: inline-block; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 600; min-width: 72px; text-align: center; white-space: nowrap; }
+.header { margin-bottom: 20px; }
+.header h1 { font-size: 20px; color: #1a1a2e; margin-bottom: 4px; font-weight: 700; letter-spacing: -0.5px; }
+.header p { color: #666; font-size: 13px; }
+.info-box { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #3498db; }
+.info-box h3 { font-size: 12px; color: #3498db; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.info-box p { font-size: 13px; color: #555; line-height: 1.5; }
+
+/* SVG icon styles */
+.icon { width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 4px; }
+
+/* Card layout (mobile) */
+.day-card { background: #fff; border-radius: 10px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.day-card.game-day { background: #e8f8f0; }
+.day-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.day-name { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+.badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; white-space: nowrap; min-width: 72px; text-align: center; }
 .badge.high { background: #e94560; color: #fff; }
 .badge.medium { background: #e67e22; color: #fff; }
 .badge.light { background: #4ecca3; color: #fff; }
 .badge.super-light { background: #d4f5e9; color: #2d6a4f; }
-.badge.rest { background: #ddd; color: #666; }
 .badge.game { background: #3498db; color: #fff; }
-.notes { margin-top: 24px; background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #e67e22; }
-.notes h3 { font-size: 14px; color: #e67e22; margin-bottom: 8px; }
+.day-meta { display: flex; gap: 16px; font-size: 12px; color: #888; margin-bottom: 6px; }
+.day-meta span { display: flex; align-items: center; gap: 4px; }
+.day-details { font-size: 13px; color: #555; line-height: 1.5; }
+.gym-note { margin-top: 8px; padding: 6px 10px; background: #e8f8f0; border-radius: 6px; font-size: 12px; color: #2d6a4f; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+
+.notes { margin-top: 20px; background: #fff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-left: 4px solid #e67e22; }
+.notes h3 { font-size: 13px; color: #e67e22; margin-bottom: 8px; }
 .notes ul { list-style: none; padding: 0; }
-.notes li { font-size: 13px; color: #555; padding: 4px 0; padding-left: 16px; position: relative; }
+.notes li { font-size: 12px; color: #555; padding: 4px 0; padding-left: 14px; position: relative; }
 .notes li:before { content: "•"; position: absolute; left: 0; color: #e67e22; }
-@media print { body { padding: 20px; } .container { max-width: 100%; } }
+
+/* Desktop table layout */
+.desktop-table { display: none; }
+.desktop-table table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.desktop-table th { background: #1a1a2e; color: #fff; padding: 14px 16px; text-align: left; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+.desktop-table td { padding: 14px 16px; border-bottom: 1px solid #eee; font-size: 14px; color: #2c3e50; }
+.desktop-table tr:last-child td { border-bottom: none; }
+.desktop-table tr.training { background: #fff; }
+.desktop-table tr.training:hover { background: #f8f8f8; }
+.desktop-table tr.game { background: #e8f8f0; }
+.desktop-table .badge { padding: 6px 14px; }
+.desktop-table .gym-available { color: #27ae60; font-weight: 500; }
+.desktop-table .gym-na { color: #ccc; }
+
+.mobile-cards { display: block; }
+
+@media (min-width: 700px) {
+  body { padding: 40px; }
+  .header h1 { font-size: 26px; }
+  .header p { font-size: 14px; }
+  .info-box { padding: 20px; margin-bottom: 24px; }
+  .info-box h3 { font-size: 14px; }
+  .info-box p { font-size: 14px; }
+  .mobile-cards { display: none; }
+  .desktop-table { display: block; }
+  .notes { margin-top: 24px; padding: 20px; }
+  .notes h3 { font-size: 14px; }
+  .notes li { font-size: 13px; }
+}
 </style>
 </head>
 <body>
@@ -49,76 +83,169 @@ tr.free { background: #f9f9f9; color: #999; }
     <p>Overview of Luca's current weekly football load.</p>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Day</th>
-        <th>Time</th>
-        <th>Session Type</th>
-        <th>Details</th>
-        <th>Intensity</th>
-        <th>Gym @ Keith Hay</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="training">
-        <td><strong>Monday</strong></td>
-        <td>4:15 – 5:45 pm</td>
-        <td>Team Training</td>
-        <td>U17 fun activity session (football tennis, etc.) — low physical load</td>
-        <td><span class="badge light">Light</span></td>
-        <td>✅ After 5:45pm</td>
-      </tr>
-      <tr class="training">
-        <td><strong>Tuesday</strong></td>
-        <td>5:00 – 7:00 pm</td>
-        <td>Gym + Grass</td>
-        <td>Combined gym session &amp; on-field work (club-run)</td>
-        <td><span class="badge medium">Medium</span></td>
-        <td>—</td>
-      </tr>
-      <tr class="training">
-        <td><strong>Wednesday</strong></td>
-        <td>4:15 – 5:45 pm</td>
-        <td>Team Training</td>
-        <td>U17 harder session — coach (Hide) pushes intensity</td>
-        <td><span class="badge high">High</span></td>
-        <td>—</td>
-      </tr>
-      <tr class="training">
-        <td><strong>Thursday</strong></td>
-        <td>5:00 – 7:00 pm</td>
-        <td>Gym + Grass</td>
-        <td>Gym session &amp; game tactics on field — mostly medium, sometimes hard</td>
-        <td><span class="badge medium">Med–High</span></td>
-        <td>—</td>
-      </tr>
-      <tr class="training">
-        <td><strong>Friday</strong></td>
-        <td>~1 hour (self-directed)</td>
-        <td>Ball Mastery</td>
-        <td>Solo at the park — ball work, technique &amp; sometimes shooting with goalkeeper friend</td>
-        <td><span class="badge super-light">Very Light</span></td>
-        <td>✅ Flexible</td>
-      </tr>
-      <tr class="training">
-        <td><strong>Saturday</strong></td>
-        <td>~1 hour (self-directed)</td>
-        <td>Ball Mastery</td>
-        <td>Solo at the park — ball work, technique &amp; sometimes shooting with goalkeeper friend</td>
-        <td><span class="badge super-light">Very Light</span></td>
-        <td>✅ Not before game (Sun)</td>
-      </tr>
-      <tr class="game">
-        <td><strong>Sunday</strong></td>
-        <td>12:30 meet / 2:00 KO</td>
-        <td>Match Day</td>
-        <td>U17 league game (finishes ~4:00 pm)</td>
-        <td><span class="badge game">Game</span></td>
-        <td>—</td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- MOBILE: Card layout -->
+  <div class="mobile-cards">
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Monday</span>
+        <span class="badge light">Light</span>
+      </div>
+      <div class="day-meta">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4:15 – 5:45 pm</span>
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/><path d="M8 16l-2 2M16 16l2 2"/></svg>Team Training</span>
+      </div>
+      <div class="day-details">U17 fun activity session (football tennis, etc.) — low physical load</div>
+      <div class="gym-note"><strong>GYM</strong> Available after 5:45pm</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Tuesday</span>
+        <span class="badge medium">Medium</span>
+      </div>
+      <div class="day-meta">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5:00 – 7:00 pm</span>
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round"><path d="M20.5 6.5a2.5 2.5 0 0 0-5 0v11a2.5 2.5 0 0 0 5 0V6.5z"/><path d="M3.5 6.5a2.5 2.5 0 0 1 5 0v11a2.5 2.5 0 0 1-5 0V6.5z"/><path d="M8.5 12h7"/></svg>Gym + Grass</span>
+      </div>
+      <div class="day-details">Combined gym session &amp; on-field work (club-run)</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Wednesday</span>
+        <span class="badge high">Heavy</span>
+      </div>
+      <div class="day-meta">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4:15 – 5:45 pm</span>
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/><path d="M8 16l-2 2M16 16l2 2"/></svg>Team Training</span>
+      </div>
+      <div class="day-details">U17 harder session — coach (Hide) pushes intensity</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Thursday</span>
+        <span class="badge medium">Med–Heavy</span>
+      </div>
+      <div class="day-meta">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5:00 – 7:00 pm</span>
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round"><path d="M20.5 6.5a2.5 2.5 0 0 0-5 0v11a2.5 2.5 0 0 0 5 0V6.5z"/><path d="M3.5 6.5a2.5 2.5 0 0 1 5 0v11a2.5 2.5 0 0 1-5 0V6.5z"/><path d="M8.5 12h7"/></svg>Gym + Grass</span>
+      </div>
+      <div class="day-details">Gym session &amp; game tactics on field — mostly medium, sometimes hard</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Friday</span>
+        <span class="badge super-light">Very Light</span>
+      </div>
+      <div class="day-meta">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~1 hour (self-directed)</span>
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg>Ball Mastery</span>
+      </div>
+      <div class="day-details">Solo at the park — ball work, technique &amp; sometimes shooting with goalkeeper friend</div>
+      <div class="gym-note"><strong>GYM</strong> Flexible</div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-header">
+        <span class="day-name">Saturday</span>
+        <span class="badge super-light">Very Light</span>
+      </div>
+      <div class="day-meta">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>~1 hour (self-directed)</span>
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg>Ball Mastery</span>
+      </div>
+      <div class="day-details">Solo at the park — ball work, technique &amp; sometimes shooting with goalkeeper friend</div>
+      <div class="gym-note"><strong>GYM</strong> Available (day before game)</div>
+    </div>
+
+    <div class="day-card game-day">
+      <div class="day-header">
+        <span class="day-name">Sunday</span>
+        <span class="badge game">Game</span>
+      </div>
+      <div class="day-meta">
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>12:30 meet / 2:00 KO</span>
+        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>Match Day</span>
+      </div>
+      <div class="day-details">U17 league game (finishes ~4:00 pm)</div>
+    </div>
+  </div>
+
+  <!-- DESKTOP: Table layout -->
+  <div class="desktop-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Session Type</th>
+          <th>Details</th>
+          <th>Intensity</th>
+          <th>Gym @ Keith Hay</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="training">
+          <td><strong>Monday</strong></td>
+          <td>4:15 – 5:45 pm</td>
+          <td>Team Training</td>
+          <td>U17 fun activity session (football tennis, etc.) — low physical load</td>
+          <td><span class="badge light">Light</span></td>
+          <td><span class="gym-available">✓ After 5:45pm</span></td>
+        </tr>
+        <tr class="training">
+          <td><strong>Tuesday</strong></td>
+          <td>5:00 – 7:00 pm</td>
+          <td>Gym + Grass</td>
+          <td>Combined gym session &amp; on-field work (club-run)</td>
+          <td><span class="badge medium">Medium</span></td>
+          <td>—</td>
+        </tr>
+        <tr class="training">
+          <td><strong>Wednesday</strong></td>
+          <td>4:15 – 5:45 pm</td>
+          <td>Team Training</td>
+          <td>U17 harder session — coach (Hide) pushes intensity</td>
+          <td><span class="badge high">Heavy</span></td>
+          <td>—</td>
+        </tr>
+        <tr class="training">
+          <td><strong>Thursday</strong></td>
+          <td>5:00 – 7:00 pm</td>
+          <td>Gym + Grass</td>
+          <td>Gym session &amp; game tactics on field — mostly medium, sometimes hard</td>
+          <td><span class="badge medium">Med–Heavy</span></td>
+          <td>—</td>
+        </tr>
+        <tr class="training">
+          <td><strong>Friday</strong></td>
+          <td>~1 hour (self-directed)</td>
+          <td>Ball Mastery</td>
+          <td>Solo at the park — ball work, technique &amp; sometimes shooting with goalkeeper friend</td>
+          <td><span class="badge super-light">Very Light</span></td>
+          <td><span class="gym-available">✓ Flexible</span></td>
+        </tr>
+        <tr class="training">
+          <td><strong>Saturday</strong></td>
+          <td>~1 hour (self-directed)</td>
+          <td>Ball Mastery</td>
+          <td>Solo at the park — ball work, technique &amp; sometimes shooting with goalkeeper friend</td>
+          <td><span class="badge super-light">Very Light</span></td>
+          <td><span class="gym-available">✓ Available (day before game)</span></td>
+        </tr>
+        <tr class="game">
+          <td><strong>Sunday</strong></td>
+          <td>12:30 meet / 2:00 KO</td>
+          <td>Match Day</td>
+          <td>U17 league game (finishes ~4:00 pm)</td>
+          <td><span class="badge game">Game</span></td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="notes">
     <h3>Notes for Rob</h3>
@@ -127,7 +254,7 @@ tr.free { background: #f9f9f9; color: #999; }
       <li>Wednesday is the hardest day — coach pushes high intensity</li>
       <li>Thursday gym + tactics is mostly medium but can be hard</li>
       <li>Friday &amp; Saturday ball mastery is low physical load, mainly technical</li>
-      <li>Luca has open gym access at Key Hay Park daily</li>
+      <li>Luca has open gym access at Keith Hay Park daily</li>
       <li>Sunday game typically finishes ~4pm</li>
       <li>Current weekly load: 4 team sessions + 2 solo ball mastery + 1 match = 7 football contacts (~11 hours)</li>
     </ul>
