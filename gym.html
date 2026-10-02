@@ -62,6 +62,12 @@ body {
 .hero h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.6px; margin-bottom: 4px; }
 .hero p { font-size: 13px; color: #6E6E6E; line-height: 1.5; }
 @media (min-width: 700px) { .hero h1 { font-size: 30px; } }
+.access-code {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: 14px; padding: 10px 12px; background: #F6F1E4; border-radius: 8px;
+  color: #7A6528; font-size: 12px; font-weight: 700;
+}
+.access-code strong { color: #1C1C1C; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 16px; letter-spacing: 1px; }
 
 .section-title {
   font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
@@ -259,7 +265,8 @@ body {
 
   function renderHome() {
     var html = '<div class="card hero"><h1>Gym Program</h1>' +
-      '<p>Strength &amp; conditioning for Luca Cardinali. Pick a phase to see the workouts.</p></div>';
+      '<p>Strength &amp; conditioning for Luca Cardinali. Pick a phase to see the workouts.</p>' +
+      '<div class="access-code"><span>Gym access code</span><strong>1270Y</strong></div></div>';
     html += '<div class="section-title">Phases</div>';
     SECTIONS.forEach(function (s) {
       var sub = s.note || '';
