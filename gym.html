@@ -349,6 +349,7 @@ body {
               return '<span class="chip">' + esc(ch.k) + ' <b>' + esc(ch.v) + '</b></span>';
             }).join('') +
           '</div>' +
+          (it.video ? '<div class="video-wrap" data-src="videos/gym/conditioning/' + esc(it.video) + '"><button class="video-btn">▶ Watch</button></div>' : '') +
           (it.steps ? '<ol class="steps">' + it.steps.map(function (s) {
             return '<li>' + esc(s) + '</li>';
           }).join('') + '</ol>' : '') +

@@ -265,6 +265,7 @@ const GYM = {
         items: [
           {
             name: 'Bike / Rower / Assault Bike',
+            video: 'assault-bike.mp4',
             pick: 'choose 1',
             chips: [
               { k: 'Sets', v: '5-10' },
@@ -290,6 +291,7 @@ const GYM = {
           },
           {
             name: 'Union Jack',
+            video: 'union-jack.mp4',
             chips: [{ k: 'Sets', v: '3-4' }],
             steps: [
               'Start on the half way point.',
