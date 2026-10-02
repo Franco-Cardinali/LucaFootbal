@@ -243,6 +243,10 @@ body {
     return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
 
+  function videoPath(phase, workout, exerciseName) {
+    return 'videos/gym/' + slug(phase.name) + '/' + slug(workout.name) + '/' + slug(exerciseName) + '.mp4';
+  }
+
   function tempoClass(t) {
     if (t === 'Max Intent') return 'chip intent';
     if (t === 'N/A' || t === '—') return 'chip na';
@@ -313,7 +317,7 @@ body {
               (tempoClass(e.tempo) === 'chip tempo' ? 'Tempo <b>' + esc(e.tempo) + '</b>' : esc(e.tempo)) +
             '</span>' +
           '</div>' +
-          '<div class="video-wrap" data-slug="' + esc(slug(e.name)) + '">' +
+          '<div class="video-wrap" data-src="' + esc(videoPath(phase, workout, e.name)) + '">' +
             '<button class="video-btn">▶ Watch</button>' +
           '</div>' +
         '</div>';
@@ -370,7 +374,7 @@ body {
      Probe metadata only; the Watch button appears solely when the file exists. */
   function wireVideos() {
     app.querySelectorAll('.video-wrap').forEach(function (wrap) {
-      var src = 'videos/gym/' + wrap.dataset.slug + '.mp4';
+      var src = wrap.dataset.src;
       var probe = document.createElement('video');
       probe.preload = 'metadata';
       probe.muted = true;
@@ -385,7 +389,7 @@ body {
   function playVideo(btn) {
     var wrap = btn.parentNode;
     var v = document.createElement('video');
-    v.src = 'videos/gym/' + wrap.dataset.slug + '.mp4';
+    v.src = wrap.dataset.src;
     v.controls = true;
     v.playsInline = true;
     v.preload = 'none';
