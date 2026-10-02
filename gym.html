@@ -138,8 +138,15 @@ body {
   border-radius: 8px; padding: 8px 12px; min-height: 36px;
 }
 .video-btn.show { display: inline-flex; }
+.video-hide {
+  display: block; border: none; background: transparent; color: #7A6528; cursor: pointer;
+  font: inherit; font-size: 11px; font-weight: 700; padding: 7px 0 0; margin-left: auto;
+}
 .video-wrap video {
   width: 100%; max-width: 420px; border-radius: 8px; background: #000; display: block;
+}
+@media (min-width: 700px) {
+  .video-wrap { width: min(100%, 420px); margin-left: auto; margin-right: 0; }
 }
 
 /* ---------- Conditioning ---------- */
@@ -385,8 +392,18 @@ body {
     v.controls = true;
     v.playsInline = true;
     v.preload = 'none';
+    var hide = document.createElement('button');
+    hide.className = 'video-hide';
+    hide.type = 'button';
+    hide.textContent = 'Hide video';
     wrap.replaceChild(v, btn);
+    wrap.appendChild(hide);
     v.play();
+  }
+
+  function hideVideo(btn) {
+    var wrap = btn.parentNode;
+    wrap.innerHTML = '<button class="video-btn show" type="button">▶ Watch</button>';
   }
 
   /* ---------- Router ---------- */
@@ -434,6 +451,9 @@ body {
 
     var play = ev.target.closest('.video-btn');
     if (play) { playVideo(play); return; }
+
+    var hide = ev.target.closest('.video-hide');
+    if (hide) { hideVideo(hide); return; }
 
     var info = ev.target.closest('.info-btn');
     if (info) {
