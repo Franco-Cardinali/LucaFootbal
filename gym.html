@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FAF9F7">
+<title>Luca Cardinali - Gym Program</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #FAF9F7; color: #1C1C1C;
+  -webkit-text-size-adjust: 100%;
+}
+.container { max-width: 800px; margin: 0 auto; padding: 0 16px 48px; }
+
+/* ---------- Sticky header ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(250,249,247,0.94);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid #ECEAE4;
+  padding-top: env(safe-area-inset-top);
+}
+.topbar-inner { max-width: 800px; margin: 0 auto; padding: 10px 16px 0; }
+.topbar-row { display: flex; align-items: center; gap: 10px; min-height: 36px; }
+.back {
+  display: none; align-items: center; justify-content: center;
+  width: 36px; height: 36px; margin-left: -8px;
+  border: none; background: none; cursor: pointer;
+  color: #7A6528; font-size: 24px; line-height: 1; border-radius: 50%;
+  flex-shrink: 0;
+}
+.back:active { background: #F0EDE4; }
+.back.show { display: flex; }
+.topbar-title { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; flex: 1; min-width: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar-meta { font-size: 11px; font-weight: 600; color: #7A6528; flex-shrink: 0;
+  background: #F6F1E4; border-radius: 20px; padding: 4px 10px; }
+
+.tabs { display: flex; gap: 4px; margin-top: 8px; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex: 1; min-width: max-content;
+  border: none; background: none; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 600; color: #6E6E6E;
+  padding: 10px 12px; border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+.tab.active { color: #1C1C1C; border-bottom-color: #C8A96A; }
+
+/* ---------- Generic card ---------- */
+.card {
+  background: #fff; border-radius: 12px; padding: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border-left: 4px solid #C8A96A; margin-bottom: 14px;
+}
+.hero { padding-top: 20px; }
+.hero h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.6px; margin-bottom: 4px; }
+.hero p { font-size: 13px; color: #6E6E6E; line-height: 1.5; }
+@media (min-width: 700px) { .hero h1 { font-size: 30px; } }
+
+.section-title {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  color: #7A6528; margin: 24px 0 10px;
+}
+.section-title:first-child { margin-top: 20px; }
+
+/* ---------- Tappable nav cards ---------- */
+.navcard {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  background: #fff; border: none; border-left: 4px solid #C8A96A; border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  padding: 16px; margin-bottom: 12px; cursor: pointer;
+  font: inherit; color: inherit; min-height: 64px;
+}
+.navcard:active { background: #FBFAF7; }
+.navcard-body { flex: 1; min-width: 0; }
+.navcard-kicker { font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: #7A6528; }
+.navcard-title { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; margin-top: 1px; }
+.navcard-sub { font-size: 12.5px; color: #6E6E6E; line-height: 1.5; margin-top: 5px; }
+.navcard-chev { color: #C8A96A; font-size: 22px; line-height: 1; flex-shrink: 0; }
+.badge {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+  color: #7A6528; background: #F6F1E4; border-radius: 20px; padding: 3px 9px; margin-top: 8px;
+}
+
+/* ---------- Superset block ---------- */
+.block {
+  background: #fff; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  margin-bottom: 14px; overflow: hidden; display: flex;
+}
+.block-rail { width: 4px; background: #C8A96A; flex-shrink: 0; }
+.block-body { flex: 1; min-width: 0; padding: 4px 0; }
+.block-superset {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  color: #B08D4A; padding: 10px 14px 0;
+}
+
+.ex { padding: 12px 14px; }
+.ex + .ex { border-top: 1px dashed #EDE8DC; }
+.ex-head { display: flex; align-items: baseline; gap: 9px; }
+.ex-label {
+  flex-shrink: 0; min-width: 26px; height: 22px; padding: 0 6px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #C8A96A; color: #fff; border-radius: 11px;
+  font-size: 11px; font-weight: 700;
+}
+.ex-name { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; line-height: 1.3; }
+.ex-reps { font-size: 20px; font-weight: 700; margin: 7px 0 0 35px; letter-spacing: -0.4px; }
+.ex-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 9px 0 0 35px; }
+.chip {
+  font-size: 11.5px; font-weight: 600; color: #6E6E6E;
+  background: #F7F6F2; border-radius: 6px; padding: 4px 8px; white-space: nowrap;
+}
+.chip b { color: #1C1C1C; font-weight: 700; }
+.chip.tempo { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: -0.2px; }
+.chip.intent { background: #F6F1E4; color: #7A6528; }
+.chip.na { color: #A5A5A5; }
+
+.info-btn {
+  border: none; background: #F6F1E4; color: #7A6528; cursor: pointer;
+  font: inherit; font-size: 11px; font-weight: 700;
+  border-radius: 20px; padding: 3px 9px; margin-left: 6px; align-self: center;
+  flex-shrink: 0;
+}
+
+/* ---------- Video ---------- */
+.video-wrap { margin: 10px 0 0 35px; }
+.video-btn {
+  display: none; align-items: center; gap: 6px;
+  border: 1px solid #E4DCC6; background: #fff; color: #7A6528; cursor: pointer;
+  font: inherit; font-size: 12.5px; font-weight: 700;
+  border-radius: 8px; padding: 8px 12px; min-height: 36px;
+}
+.video-btn.show { display: inline-flex; }
+.video-wrap video {
+  width: 100%; max-width: 420px; border-radius: 8px; background: #000; display: block;
+}
+
+/* ---------- Conditioning ---------- */
+.cond-note {
+  background: #F6F1E4; border-radius: 10px; padding: 11px 14px;
+  font-size: 13px; font-weight: 600; color: #7A6528; margin-bottom: 18px;
+}
+.cond-name { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; line-height: 1.3; }
+.cond-sub { font-size: 12.5px; color: #6E6E6E; margin-top: 2px; }
+.cond-pick {
+  display: inline-block; font-size: 11px; font-weight: 700; color: #7A6528;
+  background: #F6F1E4; border-radius: 20px; padding: 3px 9px; margin-top: 7px;
+}
+.steps { list-style: none; counter-reset: s; margin-top: 12px; }
+.steps li {
+  counter-increment: s; position: relative; padding-left: 30px; margin-bottom: 10px;
+  font-size: 13.5px; line-height: 1.55; color: #333;
+}
+.steps li:last-child { margin-bottom: 0; }
+.steps li::before {
+  content: counter(s); position: absolute; left: 0; top: 1px;
+  width: 21px; height: 21px; border-radius: 50%;
+  background: #F6F1E4; color: #7A6528;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---------- Glossary ---------- */
+.glossary { margin-top: 22px; }
+.glossary summary {
+  cursor: pointer; list-style: none; padding: 14px 16px;
+  background: #fff; border-radius: 12px; border-left: 4px solid #C8A96A;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  font-size: 13px; font-weight: 700; color: #7A6528;
+  text-transform: uppercase; letter-spacing: 1px;
+  display: flex; align-items: center; gap: 8px; min-height: 48px;
+}
+.glossary summary::-webkit-details-marker { display: none; }
+.glossary summary::before { content: '▸'; font-size: 13px; transition: transform .15s; }
+.glossary[open] summary::before { transform: rotate(90deg); }
+.glossary[open] summary { border-radius: 12px 12px 0 0; }
+.glossary-body {
+  background: #fff; border-radius: 0 0 12px 12px; border-left: 4px solid #C8A96A;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06); padding: 4px 16px 16px;
+}
+.gl-item { padding: 11px 0; border-top: 1px solid #F2F0EA; }
+.gl-item:first-child { border-top: none; }
+.gl-term { font-size: 13.5px; font-weight: 700; }
+.gl-def { font-size: 13px; color: #6E6E6E; line-height: 1.6; margin-top: 3px; }
+.gl-item.flash { animation: flash 1.6s ease-out; }
+@keyframes flash { 0%, 55% { background: #FBF4E2; } 100% { background: transparent; } }
+
+@media print {
+  .topbar, .navcard-chev, .video-wrap, .back, .tabs { display: none !important; }
+  body { background: #fff; }
+  .card, .block, .glossary-body { box-shadow: none; border: 1px solid #ddd; }
+  .glossary-body { display: block !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-row">
+      <button class="back" id="back" aria-label="Back">‹</button>
+      <div class="topbar-title" id="topbarTitle">Luca — Gym Program</div>
+      <div class="topbar-meta" id="topbarMeta" hidden></div>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+  </div>
+</header>
+
+<main class="container" id="app"></main>
+
+<script src="gym-data.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var app = document.getElementById('app');
+  var tabsEl = document.getElementById('tabs');
+  var titleEl = document.getElementById('topbarTitle');
+  var metaEl = document.getElementById('topbarMeta');
+  var backEl = document.getElementById('back');
+
+  // Order is fixed: Phase 1, Phase 2, Conditioning.
+  var SECTIONS = GYM.phases.concat([GYM.conditioning]);
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function slug(name) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  function tempoClass(t) {
+    if (t === 'Max Intent') return 'chip intent';
+    if (t === 'N/A' || t === '—') return 'chip na';
+    return 'chip tempo';
+  }
+
+  function go(hash) { location.hash = hash; }
+
+  /* ---------- Screens ---------- */
+
+  function renderHome() {
+    var html = '<div class="card hero"><h1>Gym Program</h1>' +
+      '<p>Strength &amp; conditioning for Luca Cardinali. Pick a phase to see the workouts.</p></div>';
+    html += '<div class="section-title">Phases</div>';
+    SECTIONS.forEach(function (s) {
+      var sub = s.note || '';
+      html += '<button class="navcard" data-go="#/' + s.id + '">' +
+        '<div class="navcard-body">' +
+          '<div class="navcard-kicker">' + esc(s.subtitle) + '</div>' +
+          '<div class="navcard-title">' + esc(s.name) + '</div>' +
+          '<div class="navcard-sub">' + esc(sub) + '</div>' +
+          (s.rpe ? '<span class="badge">RPE ' + esc(s.rpe) + '</span>' : '') +
+        '</div><div class="navcard-chev">›</div></button>';
+    });
+    return { html: html, title: 'Luca — Gym Program', meta: null, back: null };
+  }
+
+  function renderPhase(phase) {
+    var html = '<div class="card hero"><h1>' + esc(phase.name) + ' — ' + esc(phase.subtitle) + '</h1>' +
+      '<p>' + esc(phase.note) + '</p></div>';
+    html += '<div class="section-title">Workouts</div>';
+    phase.workouts.forEach(function (w) {
+      var names = [];
+      w.blocks.forEach(function (b) {
+        b.exercises.forEach(function (e) { names.push(e.name); });
+      });
+      html += '<button class="navcard" data-go="#/' + phase.id + '/' + w.id + '">' +
+        '<div class="navcard-body">' +
+          '<div class="navcard-title">' + esc(w.name) + '</div>' +
+          '<div class="navcard-sub">' + esc(names.slice(0, 4).join(' · ')) +
+            (names.length > 4 ? ' · +' + (names.length - 4) + ' more' : '') + '</div>' +
+        '</div><div class="navcard-chev">›</div></button>';
+    });
+    return { html: html, title: phase.name + ' — ' + phase.subtitle, meta: 'RPE ' + phase.rpe, back: '#/' };
+  }
+
+  function renderWorkout(phase, workout) {
+    var html = '';
+    workout.blocks.forEach(function (b) {
+      var isSuper = b.exercises.length > 1;
+      html += '<div class="block"><div class="block-rail"></div><div class="block-body">';
+      if (isSuper) {
+        html += '<div class="block-superset">Superset — alternate ' +
+          b.exercises.map(function (e) { return esc(e.label); }).join(' / ') + '</div>';
+      }
+      b.exercises.forEach(function (e) {
+        html += '<div class="ex">' +
+          '<div class="ex-head">' +
+            '<span class="ex-label">' + esc(e.label) + '</span>' +
+            '<span class="ex-name">' + esc(e.name) + '</span>' +
+            (e.glossary ? '<button class="info-btn" data-term="' + esc(e.glossary) + '">what?</button>' : '') +
+          '</div>' +
+          '<div class="ex-reps">' + esc(e.sets) + ' × ' + esc(e.reps) + '</div>' +
+          '<div class="ex-chips">' +
+            '<span class="chip">RPE <b>' + esc(e.rpe) + '</b></span>' +
+            '<span class="chip">Rest <b>' + esc(e.rest) + '</b></span>' +
+            '<span class="' + tempoClass(e.tempo) + '">' +
+              (tempoClass(e.tempo) === 'chip tempo' ? 'Tempo <b>' + esc(e.tempo) + '</b>' : esc(e.tempo)) +
+            '</span>' +
+          '</div>' +
+          '<div class="video-wrap" data-slug="' + esc(slug(e.name)) + '">' +
+            '<button class="video-btn">▶ Watch</button>' +
+          '</div>' +
+        '</div>';
+      });
+      html += '</div></div>';
+    });
+    html += glossaryHtml();
+    return {
+      html: html,
+      title: workout.name,
+      meta: phase.name + ' · RPE ' + phase.rpe,
+      back: '#/' + phase.id
+    };
+  }
+
+  function renderConditioning() {
+    var c = GYM.conditioning;
+    var html = '<div class="card hero"><h1>' + esc(c.name) + '</h1><p>' + esc(c.subtitle) + '</p></div>';
+    html += '<div class="cond-note">' + esc(c.note) + '</div>';
+    c.sections.forEach(function (sec) {
+      html += '<div class="section-title">' + esc(sec.title) + '</div>';
+      sec.items.forEach(function (it) {
+        html += '<div class="card">' +
+          '<div class="cond-name">' + esc(it.name) + '</div>' +
+          (it.sub ? '<div class="cond-sub">' + esc(it.sub) + '</div>' : '') +
+          (it.pick ? '<span class="cond-pick">' + esc(it.pick) + '</span>' : '') +
+          '<div class="ex-chips" style="margin-left:0">' +
+            it.chips.map(function (ch) {
+              return '<span class="chip">' + esc(ch.k) + ' <b>' + esc(ch.v) + '</b></span>';
+            }).join('') +
+          '</div>' +
+          (it.steps ? '<ol class="steps">' + it.steps.map(function (s) {
+            return '<li>' + esc(s) + '</li>';
+          }).join('') + '</ol>' : '') +
+        '</div>';
+      });
+    });
+    html += glossaryHtml();
+    return { html: html, title: c.name, meta: c.subtitle, back: '#/' };
+  }
+
+  function glossaryHtml() {
+    return '<details class="glossary" id="glossary"><summary>Glossary</summary>' +
+      '<div class="glossary-body">' +
+        GYM.glossary.map(function (g) {
+          return '<div class="gl-item" data-term="' + esc(g.term) + '">' +
+            '<div class="gl-term">' + esc(g.term) + '</div>' +
+            '<div class="gl-def">' + esc(g.def) + '</div></div>';
+        }).join('') +
+      '</div></details>';
+  }
+
+  /* ---------- Video discovery ----------
+     Probe metadata only; the Watch button appears solely when the file exists. */
+  function wireVideos() {
+    app.querySelectorAll('.video-wrap').forEach(function (wrap) {
+      var src = 'videos/gym/' + wrap.dataset.slug + '.mp4';
+      var probe = document.createElement('video');
+      probe.preload = 'metadata';
+      probe.muted = true;
+      probe.src = src;
+      probe.addEventListener('loadedmetadata', function () {
+        wrap.querySelector('.video-btn').classList.add('show');
+      });
+      probe.load();
+    });
+  }
+
+  function playVideo(btn) {
+    var wrap = btn.parentNode;
+    var v = document.createElement('video');
+    v.src = 'videos/gym/' + wrap.dataset.slug + '.mp4';
+    v.controls = true;
+    v.playsInline = true;
+    v.preload = 'none';
+    wrap.replaceChild(v, btn);
+    v.play();
+  }
+
+  /* ---------- Router ---------- */
+
+  function route() {
+    var parts = location.hash.replace(/^#\/?/, '').split('/').filter(Boolean);
+    var view;
+
+    if (parts[0] === 'conditioning') {
+      view = renderConditioning();
+    } else if (parts[0]) {
+      var phase = GYM.phases.filter(function (p) { return p.id === parts[0]; })[0];
+      if (!phase) { view = renderHome(); }
+      else if (parts[1]) {
+        var w = phase.workouts.filter(function (x) { return x.id === parts[1]; })[0];
+        view = w ? renderWorkout(phase, w) : renderPhase(phase);
+      } else {
+        view = renderPhase(phase);
+      }
+    } else {
+      view = renderHome();
+    }
+
+    app.innerHTML = view.html;
+    titleEl.textContent = view.title;
+    metaEl.textContent = view.meta || '';
+    metaEl.hidden = !view.meta;
+    backEl.classList.toggle('show', !!view.back);
+    backEl.dataset.go = view.back || '';
+    renderTabs(parts[0] || '');
+    wireVideos();
+    window.scrollTo(0, 0);
+  }
+
+  function renderTabs(active) {
+    tabsEl.innerHTML = SECTIONS.map(function (s) {
+      return '<button class="tab' + (s.id === active ? ' active' : '') +
+        '" data-go="#/' + s.id + '">' + esc(s.name) + '</button>';
+    }).join('');
+  }
+
+  document.addEventListener('click', function (ev) {
+    var nav = ev.target.closest('[data-go]');
+    if (nav && nav.dataset.go) { go(nav.dataset.go); return; }
+
+    var play = ev.target.closest('.video-btn');
+    if (play) { playVideo(play); return; }
+
+    var info = ev.target.closest('.info-btn');
+    if (info) {
+      var details = document.getElementById('glossary');
+      details.open = true;
+      var item = details.querySelector('.gl-item[data-term="' + info.dataset.term + '"]');
+      if (item) {
+        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        item.classList.remove('flash');
+        void item.offsetWidth;
+        item.classList.add('flash');
+      }
+    }
+  });
+
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
+</body>
+</html>
