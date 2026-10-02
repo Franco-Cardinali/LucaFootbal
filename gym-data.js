@@ -4,7 +4,7 @@ const GYM = {
     {
       id: 'phase1',
       name: 'In Season',
-      subtitle: 'Term 4',
+      subtitle: '',
       note: 'Still training with his team and playing friendlies.',
       rpe: '8',
       workouts: [
@@ -115,7 +115,7 @@ const GYM = {
     {
       id: 'phase2',
       name: 'Off Season',
-      subtitle: 'Off-Season',
+      subtitle: '',
       note: 'Can go heavier.',
       rpe: '8-9',
       workouts: [
