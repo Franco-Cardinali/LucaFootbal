@@ -3,7 +3,7 @@ const GYM = {
   phases: [
     {
       id: 'phase1',
-      name: 'Phase 1',
+      name: 'In Season',
       subtitle: 'Term 4',
       note: 'Still training with his team and playing friendlies.',
       rpe: '8',
@@ -114,7 +114,7 @@ const GYM = {
     },
     {
       id: 'phase2',
-      name: 'Phase 2',
+      name: 'Off Season',
       subtitle: 'Off-Season',
       note: 'Can go heavier.',
       rpe: '8-9',
