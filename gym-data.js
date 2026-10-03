@@ -5,7 +5,7 @@ const GYM = {
       id: 'phase1',
       name: 'In Season',
       subtitle: '',
-      note: 'Still training with his team and playing friendlies.',
+      note: 'Build strength and rate of force-development while mitigating fatigue (as not to compromise term 4 football).',
       rpe: '8',
       workouts: [
         {
@@ -116,7 +116,7 @@ const GYM = {
       id: 'phase2',
       name: 'Off Season',
       subtitle: '',
-      note: 'Can go heavier.',
+      note: 'Build muscle, and therefore strength while maintaining velocity. Conditioning is included in this phase. Strength will indirectly yet significantly enhance your power and therefore speed capacity.',
       rpe: '8-9',
       workouts: [
         {
