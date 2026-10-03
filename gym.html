@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#FAF9F7">
-<title>Luca Cardinali - Gym Program</title>
+<title>Luca Cardinali - Training Program</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { overflow-x: hidden; }
@@ -239,13 +239,13 @@ body {
 <header class="topbar">
   <div class="topbar-inner">
     <div class="topbar-row">
-      <button class="home" data-go="#/" aria-label="Home" title="Gym Program">
+      <button class="home" data-go="#/" aria-label="Home" title="Training Program">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="m3 10 9-7 9 7"></path><path d="M5 9.5V21h14V9.5"></path><path d="M9 21v-6h6v6"></path>
         </svg>
       </button>
       <button class="back" id="back" aria-label="Back">‹</button>
-      <div class="topbar-title" id="topbarTitle">Luca — Gym Program</div>
+      <div class="topbar-title" id="topbarTitle">Luca — Training Program</div>
       <div class="topbar-meta" id="topbarMeta" hidden></div>
     </div>
     <nav class="tabs" id="tabs"></nav>
@@ -299,7 +299,7 @@ body {
   /* ---------- Screens ---------- */
 
   function renderHome() {
-    var html = '<div class="card hero"><h1>Gym Program</h1>' +
+    var html = '<div class="card hero"><h1>Training Program</h1>' +
       '<p>Strength &amp; conditioning for Luca Cardinali. Pick a phase to see the workouts.</p>' +
       '<div class="access-code"><span>Gym access code</span><strong>1270Y</strong></div></div>';
     html += '<div class="section-title">Phases</div>';
@@ -313,7 +313,7 @@ body {
           (s.rpe ? '<span class="badge">RPE ' + esc(s.rpe) + '</span>' : '') +
         '</div><div class="navcard-chev">›</div></button>';
     });
-    return { html: html, title: 'Luca — Gym Program', meta: null, back: null };
+    return { html: html, title: 'Luca — Training Program', meta: null, back: null };
   }
 
   function renderPhase(phase) {
