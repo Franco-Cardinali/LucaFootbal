@@ -290,7 +290,8 @@ body {
   }
 
   function renderPhase(phase) {
-    var html = '<div class="card hero"><h1>' + esc(phase.name) + ' — ' + esc(phase.subtitle) + '</h1>' +
+    var phaseTitle = phase.name + (phase.subtitle ? ' — ' + phase.subtitle : '');
+    var html = '<div class="card hero"><h1>' + esc(phaseTitle) + '</h1>' +
       '<p>' + esc(phase.note) + '</p></div>';
     html += '<div class="section-title">Workouts</div>';
     phase.workouts.forEach(function (w) {
@@ -305,7 +306,7 @@ body {
             (names.length > 4 ? ' · +' + (names.length - 4) + ' more' : '') + '</div>' +
         '</div><div class="navcard-chev">›</div></button>';
     });
-    return { html: html, title: phase.name + ' — ' + phase.subtitle, meta: 'RPE ' + phase.rpe, back: '#/' };
+    return { html: html, title: phaseTitle, meta: 'RPE ' + phase.rpe, back: '#/' };
   }
 
   function renderWorkout(phase, workout) {
