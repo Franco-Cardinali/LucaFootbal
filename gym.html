@@ -66,6 +66,9 @@ body {
   border-left: 4px solid #C8A96A; margin-bottom: 14px;
 }
 .hero { padding-top: 20px; }
+.hero.in-season { background: #EAF5EC; }
+.hero.off-season { background: #FCEBDD; }
+.hero.conditioning { background: #F1ECF8; }
 .hero h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.6px; margin-bottom: 4px; }
 .hero p { font-size: 13px; color: #6E6E6E; line-height: 1.5; }
 @media (min-width: 700px) { .hero h1 { font-size: 30px; } }
@@ -90,6 +93,9 @@ body {
   padding: 16px; margin-bottom: 12px; cursor: pointer;
   font: inherit; color: inherit; min-height: 64px;
 }
+.navcard.in-season { background: #EAF5EC; }
+.navcard.off-season { background: #FCEBDD; }
+.navcard.conditioning { background: #F1ECF8; }
 .navcard:active { background: #FBFAF7; }
 .navcard-body { flex: 1; min-width: 0; }
 .navcard-kicker { font-size: 11px; font-weight: 700; text-transform: uppercase;
@@ -258,6 +264,12 @@ body {
     return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
 
+  function sectionClass(id) {
+    if (id === 'phase1') return 'in-season';
+    if (id === 'phase2') return 'off-season';
+    return 'conditioning';
+  }
+
   function videoPath(phase, workout, exerciseName) {
     return 'videos/gym/' + slug(phase.name) + '/' + slug(workout.name) + '/' + slug(exerciseName) + '.mp4';
   }
@@ -279,7 +291,7 @@ body {
     html += '<div class="section-title">Phases</div>';
     SECTIONS.forEach(function (s) {
       var sub = s.note || '';
-      html += '<button class="navcard" data-go="#/' + s.id + '">' +
+      html += '<button class="navcard ' + sectionClass(s.id) + '" data-go="#/' + s.id + '">' +
         '<div class="navcard-body">' +
           '<div class="navcard-kicker">' + esc(s.subtitle) + '</div>' +
           '<div class="navcard-title">' + esc(s.name) + '</div>' +
@@ -292,7 +304,7 @@ body {
 
   function renderPhase(phase) {
     var phaseTitle = phase.name + (phase.subtitle ? ' — ' + phase.subtitle : '');
-    var html = '<div class="card hero"><h1>' + esc(phaseTitle) + '</h1>' +
+    var html = '<div class="card hero ' + sectionClass(phase.id) + '"><h1>' + esc(phaseTitle) + '</h1>' +
       '<p>' + esc(phase.note) + '</p></div>';
     html += '<div class="section-title">Workouts</div>';
     phase.workouts.forEach(function (w) {
@@ -352,7 +364,7 @@ body {
 
   function renderConditioning() {
     var c = GYM.conditioning;
-    var html = '<div class="card hero"><h1>' + esc(c.name) + '</h1><p>' + esc(c.subtitle) + '</p></div>';
+    var html = '<div class="card hero conditioning"><h1>' + esc(c.name) + '</h1><p>' + esc(c.subtitle) + '</p></div>';
     html += '<div class="cond-note">' + esc(c.note) + '</div>';
     c.sections.forEach(function (sec) {
       html += '<div class="section-title">' + esc(sec.title) + '</div>';
