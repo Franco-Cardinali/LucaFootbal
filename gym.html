@@ -158,6 +158,7 @@ body {
 .video-wrap video {
   width: 100%; max-width: 420px; border-radius: 8px; background: #000; display: block;
 }
+.conditioning-video { margin: 0 0 10px; }
 
 /* ---------- Conditioning ---------- */
 .cond-note {
@@ -357,6 +358,7 @@ body {
       html += '<div class="section-title">' + esc(sec.title) + '</div>';
       sec.items.forEach(function (it) {
         html += '<div class="card">' +
+          (it.video ? '<div class="video-wrap conditioning-video" data-src="videos/gym/conditioning/' + esc(it.video) + '"><button class="video-btn">▶ Watch</button></div>' : '') +
           '<div class="cond-name">' + esc(it.name) + '</div>' +
           (it.sub ? '<div class="cond-sub">' + esc(it.sub) + '</div>' : '') +
           (it.pick ? '<span class="cond-pick">' + esc(it.pick) + '</span>' : '') +
@@ -365,7 +367,6 @@ body {
               return '<span class="chip">' + esc(ch.k) + ' <b>' + esc(ch.v) + '</b></span>';
             }).join('') +
           '</div>' +
-          (it.video ? '<div class="video-wrap" data-src="videos/gym/conditioning/' + esc(it.video) + '"><button class="video-btn">▶ Watch</button></div>' : '') +
           (it.steps ? '<ol class="steps">' + it.steps.map(function (s) {
             return '<li>' + esc(s) + '</li>';
           }).join('') + '</ol>' : '') +
