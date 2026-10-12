@@ -80,7 +80,6 @@ body.lang-it .lang-en { display: none; }
 body.lang-en .lang-it { display: none; }
 .lang-switch { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
 .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; border: 1.5px solid #EAEAEA; background: #fff; font-size: 13px; font-weight: 600; color: #6E6E6E; cursor: pointer; }
-.lang-btn .flag { width: 22px; height: 14px; object-fit: cover; border-radius: 2px; }
 .lang-btn.active { border-color: #C8A96A; color: #7A6528; background: #FFF8EC; }
 </style>
 </head>
@@ -88,8 +87,8 @@ body.lang-en .lang-it { display: none; }
 
 <div class="container">
   <div class="lang-switch">
-    <button class="lang-btn active" id="btn-it" onclick="setLang('it')"><img class="flag" src="https://flagcdn.com/w40/it.png" alt="Italian flag"> Italiano</button>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')"><img class="flag" src="https://flagcdn.com/w40/gb-eng.png" alt="English flag"> English</button>
+    <button class="lang-btn active" id="btn-it" onclick="setLang('it')">Italiano</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
   </div>
   <div class="profile">
     <img class="profile-img" src="luca-profile.jpg" alt="Luca Cardinali">
